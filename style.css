@@ -40,6 +40,16 @@ body {
   overflow-x: hidden;
 
   word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+  text-wrap: pretty;
 }
 
 
@@ -183,11 +193,11 @@ body {
       150px
     );
 
-  line-height: 0.86;
+  line-height: 0.9;
 
   font-weight: 850;
 
-  letter-spacing: -0.075em;
+  letter-spacing: -0.025em;
 }
 
 
@@ -195,6 +205,8 @@ body {
   color: var(--text);
 
   font-weight: 780;
+
+  letter-spacing: 0.005em;
 }
 
 
@@ -203,12 +215,14 @@ body {
 
   font-weight: 900;
 
-  letter-spacing: -0.045em;
+  letter-spacing: 0.035em;
 }
 
 
 .hero h1 .title-dot {
   color: var(--blue);
+
+  margin-left: 0.01em;
 }
 
 
@@ -319,13 +333,13 @@ body {
 
 
 .section-label {
-  margin-bottom: 34px;
-
+  margin-bottom: 18px;
   color: var(--blue);
 
-  font-size: 14px;
-
-  font-weight: 800;
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
 }
 
 
@@ -342,16 +356,13 @@ body {
 .text-wrap h2,
 .prayer-section h2,
 .support-section h2 {
-  font-size:
-    clamp(
-      38px,
-      5vw,
-      64px
-    );
+  max-width: 760px;
 
-  line-height: 1.24;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.5;
 
-  letter-spacing: -0.045em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 
@@ -460,20 +471,13 @@ body {
 
 
 .vision-copy {
-  max-width: 980px;
+  max-width: 760px;
 
-  font-size:
-    clamp(
-      42px,
-      6.3vw,
-      82px
-    );
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.5;
 
-  line-height: 1.18;
-
-  font-weight: 780;
-
-  letter-spacing: -0.055em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 
@@ -670,11 +674,16 @@ body {
   margin-top: 10px;
 
   color:
-    rgba(255, 255, 255, 0.78);
+    rgba(255, 255, 255, 0.82);
 
   font-size: 17px;
 
   line-height: 1.8;
+}
+
+
+.prayer-list strong {
+  color: white;
 }
 
 
@@ -812,9 +821,9 @@ footer strong {
       120px
     );
 
-  line-height: 0.9;
+  line-height: 0.95;
 
-  letter-spacing: -0.07em;
+  letter-spacing: -0.025em;
 }
 
 
@@ -822,6 +831,8 @@ footer strong .pray-text {
   color: white;
 
   font-weight: 780;
+
+  letter-spacing: 0.005em;
 }
 
 
@@ -830,7 +841,7 @@ footer strong .it-accent {
 
   font-weight: 900;
 
-  letter-spacing: -0.045em;
+  letter-spacing: 0.035em;
 }
 
 
@@ -883,12 +894,22 @@ footer small {
 
 @media (max-width: 760px) {
 
+  body {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+
+  /* -------------------------
+     HERO
+  ------------------------- */
+
   .hero {
     min-height: 100svh;
 
     padding:
       26px
-      22px
+      23px
       calc(
         46px +
         env(safe-area-inset-bottom)
@@ -909,13 +930,17 @@ footer small {
     min-height: 58px;
 
     font-size: 10px;
+
+    line-height: 1.55;
   }
 
 
   .hero-kicker {
-    margin-bottom: 17px;
+    margin-bottom: 18px;
 
     font-size: 11px;
+
+    letter-spacing: 0.15em;
   }
 
 
@@ -923,87 +948,160 @@ footer small {
     font-size:
       clamp(
         43px,
-        13.5vw,
-        66px
+        13.7vw,
+        60px
       );
 
-    letter-spacing: -0.07em;
+    line-height: 0.95;
+
+    letter-spacing: -0.015em;
+  }
+
+
+  .hero h1 .pray-text {
+    letter-spacing: 0.008em;
+  }
+
+
+  .hero h1 .it-accent {
+    letter-spacing: 0.045em;
   }
 
 
   .hero-copy {
-    margin-top: 27px;
+    max-width: 340px;
 
-    font-size: 21px;
+    margin-top: 30px;
+
+    font-size: 20px;
+
+    line-height: 1.55;
+
+    letter-spacing: -0.025em;
   }
 
 
   .hero-link {
-    margin-top: 36px;
+    margin-top: 38px;
 
     font-size: 13px;
   }
 
 
+  /* -------------------------
+     SECTION
+  ------------------------- */
+
   .section,
   .section-soft,
   .support-section {
     padding:
-      86px
-      22px;
+      78px
+      23px;
   }
 
 
   .section + .section::before {
-    left: 22px;
-    right: 22px;
+    left: 23px;
+    right: 23px;
   }
 
 
+  /*
+    인삿말 / 상황 / 필요 / 사역 / 기도 / 후원
+    → 메인 대제목
+  */
   .section-label {
-    margin-bottom: 25px;
+    margin-bottom: 18px;
 
-    font-size: 12px;
+    color: var(--blue);
+
+    font-size: 30px;
+
+    font-weight: 850;
+
+    line-height: 1.18;
+
+    letter-spacing: -0.045em;
   }
 
 
+  .section-label-light {
+    color: #b7c1ff;
+  }
+
+
+  /*
+    샬롬!
+    지난 학기...
+    순장이라는 이름보다...
+    이번 학기 이렇게...
+    → 대제목 아래 설명
+  */
   .text-wrap h2,
   .prayer-section h2,
   .support-section h2 {
-    font-size:
-      clamp(
-        33px,
-        9.2vw,
-        44px
-      );
+    max-width: 350px;
 
-    line-height: 1.3;
+    font-size: 21px;
+
+    line-height: 1.5;
+
+    font-weight: 720;
+
+    letter-spacing: -0.035em;
+  }
+
+
+  .text-wrap h2 br,
+  .support-section h2 br {
+    display: none;
   }
 
 
   .body-copy {
-    margin-top: 32px;
+    max-width: 100%;
 
-    font-size: 17px;
+    margin-top: 29px;
 
-    line-height: 1.85;
+    color: #626a77;
+
+    font-size: 16.5px;
+
+    line-height: 1.9;
+
+    letter-spacing: -0.015em;
+  }
+
+
+  .body-copy p {
+    max-width: 100%;
   }
 
 
   .body-copy p + p {
-    margin-top: 21px;
+    margin-top: 22px;
   }
 
 
   .emphasis {
-    padding-top: 18px;
+    padding:
+      17px
+      0
+      2px;
 
-    font-size: 19px;
+    font-size: 18px;
+
+    line-height: 1.82;
   }
 
 
+  /* -------------------------
+     NEED
+  ------------------------- */
+
   .simple-list {
-    margin-top: 34px;
+    margin-top: 32px;
   }
 
 
@@ -1012,99 +1110,90 @@ footer small {
       17px
       0;
 
-    font-size: 17px;
+    font-size: 16.5px;
 
-    line-height: 1.6;
+    font-weight: 680;
+
+    line-height: 1.65;
   }
 
 
   .after-list {
-    margin-top: 30px;
+    margin-top: 28px;
 
-    font-size: 17px;
+    font-size: 16.5px;
+
+    line-height: 1.9;
   }
 
 
+  /* -------------------------
+     VISION
+  ------------------------- */
+
   .vision-section {
     padding:
-      96px
-      22px;
+      86px
+      23px;
+  }
+
+
+  .vision-section .section-label {
+    font-size: 30px;
   }
 
 
   .vision-copy {
-    font-size:
-      clamp(
-        36px,
-        10.5vw,
-        50px
-      );
+    font-size: 20px;
+    line-height: 1.55;
+  }
 
-    line-height: 1.25;
+
+  .vision-copy br {
+    display: none;
   }
 
 
   .vision-section blockquote {
-    margin-top: 52px;
+    margin-top: 46px;
 
-    font-size: 16px;
+    padding-left: 18px;
+
+    font-size: 15.5px;
+
+    line-height: 1.85;
+  }
+
+
+  .vision-section blockquote span {
+    margin-top: 8px;
+
+    font-size: 13px;
   }
 
 
   .vision-note {
-    margin-top: 42px;
+    margin-top: 38px;
 
-    font-size: 17px;
+    font-size: 16.5px;
+
+    line-height: 1.9;
   }
 
 
+  /* -------------------------
+     MINISTRY
+  ------------------------- */
+
   .ministry-list {
-    margin-top: 44px;
+    margin-top: 38px;
   }
 
 
   .ministry-item {
     grid-template-columns: 1fr;
 
-    gap: 12px;
-
-    padding:
-      27px
-      0;
-  }
-
-
-  .ministry-item h3 {
-    font-size: 20px;
-  }
-
-
-  .ministry-item p {
-    font-size: 16px;
-
-    line-height: 1.8;
-  }
-
-
-  .prayer-section {
-    padding:
-      92px
-      22px
-      102px;
-  }
-
-
-  .prayer-list {
-    margin-top: 52px;
-  }
-
-
-  .prayer-list article {
-    grid-template-columns:
-      38px
-      1fr;
-
-    gap: 10px;
+    gap: 9px;
 
     padding:
       25px
@@ -1112,43 +1201,185 @@ footer small {
   }
 
 
-  .prayer-list h3 {
+  .ministry-item h3 {
+    font-size: 19px;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.025em;
+  }
+
+
+  .ministry-item p {
+    color: #68717e;
+
+    font-size: 15.5px;
+
+    line-height: 1.85;
+
+    letter-spacing: -0.01em;
+  }
+
+
+  /* -------------------------
+     PRAYER
+  ------------------------- */
+
+  .prayer-section {
+    padding:
+      86px
+      23px
+      94px;
+  }
+
+
+  .prayer-section .section-label {
+    font-size: 30px;
+  }
+
+
+  .prayer-section h2 {
     font-size: 21px;
+
+    margin-top: 0;
+  }
+
+
+  .prayer-list {
+    margin-top: 42px;
+  }
+
+
+  .prayer-list article {
+    grid-template-columns:
+      31px
+      1fr;
+
+    gap: 9px;
+
+    padding:
+      24px
+      0;
+  }
+
+
+  .prayer-list article > span {
+    padding-top: 3px;
+
+    font-size: 11px;
+  }
+
+
+  .prayer-list h3 {
+    font-size: 19px;
+
+    line-height: 1.45;
+
+    letter-spacing: -0.025em;
   }
 
 
   .prayer-list p {
-    font-size: 16px;
+    margin-top: 9px;
+
+    font-size: 15.5px;
+
+    line-height: 1.85;
+
+    letter-spacing: -0.01em;
   }
 
 
+  /* -------------------------
+     CLOSING
+  ------------------------- */
+
+  .closing-sign {
+    padding-top: 12px;
+  }
+
+
+  /* -------------------------
+     FOOTER
+  ------------------------- */
+
   footer {
-    min-height: 52vh;
+    min-height: 48vh;
 
     padding:
-      58px
-      22px
+      56px
+      23px
       calc(
-        58px +
+        56px +
         env(safe-area-inset-bottom)
       );
   }
 
 
   footer p {
-    font-size: 17px;
+    font-size: 16px;
   }
 
 
   footer strong {
-    margin-top: 32px;
+    margin-top: 30px;
 
     font-size:
       clamp(
-        40px,
-        12.5vw,
-        62px
+        39px,
+        12.8vw,
+        58px
       );
+
+    letter-spacing: -0.015em;
+  }
+
+
+  footer strong .pray-text {
+    letter-spacing: 0.008em;
+  }
+
+
+  footer strong .it-accent {
+    letter-spacing: 0.045em;
+  }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 360px) {
+
+  .hero h1 {
+    font-size: 41px;
+  }
+
+
+  .section,
+  .section-soft,
+  .support-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+
+  .section-label {
+    font-size: 28px;
+  }
+
+
+  .text-wrap h2,
+  .prayer-section h2,
+  .support-section h2 {
+    font-size: 20px;
+  }
+
+
+  .body-copy,
+  .after-list {
+    font-size: 16px;
   }
 }
 
@@ -1166,5 +1397,92 @@ footer small {
     transform: none;
 
     transition: none;
+  }
+}
+
+/* ========================================
+   MOBILE TYPOGRAPHY FINAL OVERRIDE
+   반드시 style.css 맨 마지막에 둘 것
+======================================== */
+
+@media screen and (max-width: 760px) {
+
+  /* 인삿말 / 상황 / 필요 / 사역 / 기도 / 후원 / 마무리 */
+  .section-label,
+  .vision-section .section-label,
+  .prayer-section .section-label {
+    font-size: 30px !important;
+    line-height: 1.15 !important;
+    font-weight: 850 !important;
+    letter-spacing: -0.04em !important;
+    margin-bottom: 16px !important;
+  }
+
+
+  /* 샬롬! IT단대에서 인사드립니다.
+     지난 학기, 관계와 기도의...
+     순장이라는 이름보다...
+     이번 학기 이렇게 살아가려고 합니다.
+     함께 기도해주세요.
+     기도와 함께 재정으로...
+  */
+  .text-wrap h2,
+  .prayer-section h2,
+  .support-section h2 {
+    font-size: 20px !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    max-width: 100% !important;
+  }
+
+
+  /* HTML에 직접 넣어둔 강제 줄바꿈 제거 */
+  .text-wrap h2 br,
+  .support-section h2 br {
+    display: none !important;
+  }
+
+
+  /* 줄글 */
+  .body-copy {
+    font-size: 16px !important;
+    line-height: 1.85 !important;
+    letter-spacing: -0.01em !important;
+  }
+
+
+  .body-copy p {
+    word-break: keep-all !important;
+    overflow-wrap: break-word !important;
+    text-wrap: pretty !important;
+  }
+
+
+  /* 사역 각각의 이름 */
+  .ministry-item h3 {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+
+  /* 사역 설명 */
+  .ministry-item p {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+
+
+  /* 기도제목 각각의 이름 */
+  .prayer-list h3 {
+    font-size: 18px !important;
+    line-height: 1.45 !important;
+  }
+
+
+  /* 기도제목 설명 */
+  .prayer-list p {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
   }
 }
