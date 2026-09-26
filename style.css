@@ -410,17 +410,94 @@ section[id] {
 
 .emphasis {
   padding:
-    26px
-    0
-    4px;
+    10px
+    0;
 
   color: var(--text);
 
-  font-size: 22px;
+  font-size: 21px;
 
   font-weight: 650;
 
   line-height: 1.75;
+}
+
+
+/* ========================================
+   TEXT CARD
+======================================== */
+
+.text-card {
+  position: relative;
+
+  margin-top: 38px;
+
+  padding:
+    34px
+    36px
+    34px;
+
+  border:
+    1px solid
+    rgba(19, 23, 34, 0.08);
+
+  border-radius: 18px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  box-shadow:
+    0
+    12px
+    36px
+    rgba(19, 23, 34, 0.035);
+
+  backdrop-filter: blur(6px);
+
+  -webkit-backdrop-filter:
+    blur(6px);
+}
+
+
+.text-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 30px;
+
+  width: 42px;
+  height: 3px;
+
+  border-radius:
+    0
+    0
+    10px
+    10px;
+
+  background: var(--blue);
+}
+
+
+.text-card.body-copy {
+  margin-top: 38px;
+}
+
+
+.text-card-small {
+  max-width: 760px;
+
+  margin-top: 32px;
+
+  padding:
+    24px
+    28px;
+}
+
+
+.text-card-small .after-list {
+  margin-top: 0;
 }
 
 
@@ -744,9 +821,15 @@ section[id] {
 .account-box {
   max-width: 520px;
 
-  margin-top: 42px;
+  margin-top: 28px;
 
-  padding: 24px;
+  padding:
+    23px
+    26px;
+
+  border:
+    1px solid
+    rgba(84, 112, 255, 0.13);
 
   border-radius: 16px;
 
@@ -794,7 +877,7 @@ section[id] {
 
 
 .closing-sign {
-  padding-top: 18px;
+  padding-top: 14px;
 
   color: var(--text);
 }
@@ -817,6 +900,7 @@ footer {
     7vw;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: flex-end;
@@ -886,6 +970,7 @@ footer small {
 
   letter-spacing: 0.14em;
 }
+
 
 /* ========================================
    BOTTOM NAV
@@ -1009,18 +1094,6 @@ footer small {
 }
 
 
-/* 화면이 좁아서 메뉴 전체가 안 들어갈 때는
-   좌우 스크롤 가능하도록 왼쪽부터 배치 */
-@media (max-width: 500px) {
-
-  .bottom-nav-track {
-    justify-content: flex-start;
-  }
-
-}
-
-
-
 /* ========================================
    REVEAL
 ======================================== */
@@ -1033,7 +1106,8 @@ footer small {
 
   transition:
     opacity 0.7s ease,
-    transform 0.7s cubic-bezier(.22, 1, .36, 1);
+    transform 0.7s
+    cubic-bezier(.22, 1, .36, 1);
 }
 
 
@@ -1199,8 +1273,6 @@ footer small {
   .body-copy {
     max-width: 100%;
 
-    margin-top: 29px;
-
     font-size: 16px;
 
     line-height: 1.85;
@@ -1209,13 +1281,52 @@ footer small {
   }
 
 
+  .text-card {
+    margin-top: 27px;
+
+    padding:
+      27px
+      22px
+      25px;
+
+    border-radius: 16px;
+
+    box-shadow:
+      0
+      8px
+      26px
+      rgba(19, 23, 34, 0.03);
+  }
+
+
+  .text-card::before {
+    left: 22px;
+
+    width: 34px;
+    height: 3px;
+  }
+
+
+  .text-card.body-copy {
+    margin-top: 27px;
+  }
+
+
+  .text-card-small {
+    margin-top: 27px;
+
+    padding:
+      22px
+      22px;
+  }
+
+
   .emphasis {
     padding:
-      17px
-      0
-      2px;
+      8px
+      0;
 
-    font-size: 18px;
+    font-size: 17px;
 
     line-height: 1.82;
   }
@@ -1238,11 +1349,11 @@ footer small {
 
 
   .after-list {
-    margin-top: 28px;
+    margin-top: 0;
 
-    font-size: 16.5px;
+    font-size: 16px;
 
-    line-height: 1.9;
+    line-height: 1.85;
   }
 
 
@@ -1377,6 +1488,20 @@ footer small {
   }
 
 
+  .account-box {
+    margin-top: 22px;
+
+    padding:
+      21px
+      22px;
+  }
+
+
+  .account-box strong {
+    font-size: 18px;
+  }
+
+
   footer {
     min-height: 48vh;
 
@@ -1418,9 +1543,17 @@ footer small {
     letter-spacing: 0.05em;
   }
 
+}
 
-  .bottom-nav {
-    display: block;
+
+/* ========================================
+   NARROW MOBILE NAV
+======================================== */
+
+@media (max-width: 500px) {
+
+  .bottom-nav-track {
+    justify-content: flex-start;
   }
 
 }
@@ -1457,6 +1590,14 @@ footer small {
   .support-section h2,
   .vision-copy {
     font-size: 19px;
+  }
+
+
+  .text-card {
+    padding:
+      25px
+      19px
+      23px;
   }
 
 }
