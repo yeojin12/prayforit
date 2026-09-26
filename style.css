@@ -44,6 +44,11 @@ body {
 }
 
 
+button {
+  font: inherit;
+}
+
+
 h1,
 h2,
 h3,
@@ -63,15 +68,14 @@ section[id] {
 }
 
 
+
 /* ========================================
    HERO
 ======================================== */
 
 .hero {
   position: relative;
-
   isolation: isolate;
-
   overflow: hidden;
 
   min-height: 100svh;
@@ -278,6 +282,7 @@ section[id] {
 }
 
 
+
 /* ========================================
    COMMON
 ======================================== */
@@ -423,6 +428,7 @@ section[id] {
 }
 
 
+
 /* ========================================
    TEXT CARD
 ======================================== */
@@ -434,8 +440,7 @@ section[id] {
 
   padding:
     34px
-    36px
-    34px;
+    36px;
 
   border:
     1px solid
@@ -501,6 +506,7 @@ section[id] {
 }
 
 
+
 /* ========================================
    NEED
 ======================================== */
@@ -542,6 +548,7 @@ section[id] {
 
   line-height: 1.9;
 }
+
 
 
 /* ========================================
@@ -639,6 +646,7 @@ section[id] {
 }
 
 
+
 /* ========================================
    MINISTRY
 ======================================== */
@@ -687,6 +695,7 @@ section[id] {
 
   line-height: 1.85;
 }
+
 
 
 /* ========================================
@@ -790,6 +799,7 @@ section[id] {
 }
 
 
+
 /* ========================================
    SUPPORT
 ======================================== */
@@ -867,8 +877,9 @@ section[id] {
 }
 
 
+
 /* ========================================
-   CLOSING
+   CLOSING LETTER
 ======================================== */
 
 .closing-wrap {
@@ -876,16 +887,563 @@ section[id] {
 }
 
 
-.closing-sign {
-  padding-top: 14px;
+.closing-letter {
+  max-width: 760px;
+
+  margin-top: 32px;
+}
+
+
+.letter-envelope {
+  position: relative;
+
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    72px
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 22px;
+
+  padding:
+    27px
+    28px;
+
+  border:
+    1px solid
+    rgba(19, 23, 34, 0.1);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #f8f9ff 100%
+    );
+
+  box-shadow:
+    0
+    15px
+    42px
+    rgba(19, 23, 34, 0.055);
 
   color: var(--text);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  appearance: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 
-.closing-sign strong {
+.letter-envelope:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(84, 112, 255, 0.28);
+
+  box-shadow:
+    0
+    18px
+    48px
+    rgba(19, 23, 34, 0.075);
+}
+
+
+.closing-letter.is-open
+.letter-envelope {
+  border-color:
+    rgba(84, 112, 255, 0.22);
+
+  background: var(--blue-soft);
+}
+
+
+.envelope-mark {
+  position: relative;
+
+  width: 64px;
+  height: 44px;
+
+  display: block;
+
+  border:
+    1.5px solid
+    var(--blue);
+
+  border-radius: 8px;
+}
+
+
+.envelope-mark::before,
+.envelope-mark::after {
+  content: "";
+
+  position: absolute;
+
+  top: 11px;
+
+  width: 35px;
+  height: 1.5px;
+
+  background: var(--blue);
+}
+
+
+.envelope-mark::before {
+  left: 3px;
+
+  transform:
+    rotate(32deg);
+
+  transform-origin:
+    left center;
+}
+
+
+.envelope-mark::after {
+  right: 3px;
+
+  transform:
+    rotate(-32deg);
+
+  transform-origin:
+    right center;
+}
+
+
+.envelope-copy {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.envelope-copy small {
   color: var(--blue);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  letter-spacing: 0.07em;
 }
+
+
+.envelope-copy strong {
+  margin-top: 4px;
+
+  font-size: 19px;
+
+  line-height: 1.4;
+
+  letter-spacing: -0.025em;
+}
+
+
+.open-letter-label {
+  margin-top: 7px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+
+  font-weight: 650;
+}
+
+
+.envelope-arrow {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background: var(--blue-soft);
+
+  color: var(--blue);
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.4s cubic-bezier(.22, 1, .36, 1),
+    background 0.25s ease;
+}
+
+
+.closing-letter.is-open
+.envelope-arrow {
+  transform: rotate(180deg);
+
+  background:
+    rgba(84, 112, 255, 0.14);
+}
+
+
+.closing-letter-panel {
+  display: grid;
+
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+
+  transition:
+    grid-template-rows 0.5s cubic-bezier(.22, 1, .36, 1),
+    opacity 0.35s ease,
+    margin-top 0.4s ease;
+}
+
+
+.closing-letter.is-open
+.closing-letter-panel {
+  grid-template-rows: 1fr;
+
+  opacity: 1;
+
+  margin-top: 15px;
+}
+
+
+.closing-letter-panel-inner {
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+.final-letter-paper {
+  position: relative;
+
+  overflow: hidden;
+
+  padding:
+    32px
+    35px
+    34px;
+
+  border:
+    1px solid
+    rgba(19, 23, 34, 0.09);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffefa 0%,
+      #ffffff 100%
+    );
+
+  box-shadow:
+    0
+    18px
+    48px
+    rgba(19, 23, 34, 0.05);
+}
+
+
+.final-letter-paper::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 4px;
+
+  background: var(--blue);
+}
+
+
+.final-letter-meta {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 18px;
+
+  padding-bottom: 19px;
+
+  border-bottom:
+    1px solid
+    rgba(19, 23, 34, 0.08);
+
+  color: var(--blue);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  letter-spacing: 0.08em;
+}
+
+
+.final-letter-meta span:last-child {
+  color: #9299a5;
+}
+
+
+.final-letter-body {
+  padding-top: 28px;
+
+  color: var(--muted);
+
+  font-size: 18px;
+
+  line-height: 1.9;
+}
+
+
+.final-letter-body p + p {
+  margin-top: 23px;
+}
+
+
+.final-letter-sign {
+  margin-top: 34px;
+
+  padding-top: 23px;
+
+  border-top:
+    1px solid
+    rgba(19, 23, 34, 0.08);
+
+  color: var(--muted);
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+.final-letter-sign strong {
+  display: block;
+
+  margin-top: 5px;
+
+  color: var(--blue);
+
+  font-size: 17px;
+}
+
+
+
+/* ========================================
+   PRAYER FORM CARD
+======================================== */
+
+.prayer-form-card {
+  position: relative;
+
+  max-width: 760px;
+
+  margin-top: 46px;
+
+  overflow: hidden;
+
+  padding:
+    34px
+    36px;
+
+  border:
+    1px solid
+    rgba(84, 112, 255, 0.14);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(238, 241, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0.95) 100%
+    );
+
+  box-shadow:
+    0
+    14px
+    40px
+    rgba(19, 23, 34, 0.045);
+}
+
+
+.prayer-form-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: var(--blue);
+}
+
+
+.prayer-form-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--blue);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+}
+
+
+.prayer-form-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+}
+
+
+.prayer-form-card h3 {
+  margin-top: 18px;
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      34px
+    );
+
+  line-height: 1.35;
+
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+}
+
+
+.prayer-form-card p {
+  max-width: 620px;
+
+  margin-top: 15px;
+
+  color: var(--muted);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+
+.prayer-form-card p + p {
+  margin-top: 8px;
+}
+
+
+.prayer-form-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 28px;
+
+  min-width: 230px;
+
+  margin-top: 26px;
+
+  padding:
+    15px
+    18px;
+
+  border-radius: 13px;
+
+  background: var(--blue);
+
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.prayer-form-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0
+    10px
+    24px
+    rgba(84, 112, 255, 0.24);
+}
+
+
+.prayer-form-button span:last-child {
+  font-size: 17px;
+}
+
+
+.prayer-form-card > small {
+  display: block;
+
+  margin-top: 13px;
+
+  color: #858d99;
+
+  font-size: 12px;
+}
+
 
 
 /* ========================================
@@ -897,7 +1455,8 @@ footer {
 
   padding:
     70px
-    7vw;
+    7vw
+    120px;
 
   display: flex;
 
@@ -972,6 +1531,7 @@ footer small {
 }
 
 
+
 /* ========================================
    BOTTOM NAV
 ======================================== */
@@ -997,9 +1557,8 @@ footer small {
       560px
     );
 
-  transform: translateX(-50%);
-
-  opacity: 1;
+  transform:
+    translateX(-50%);
 
   pointer-events: auto;
 }
@@ -1094,6 +1653,7 @@ footer small {
 }
 
 
+
 /* ========================================
    REVEAL
 ======================================== */
@@ -1106,17 +1666,16 @@ footer small {
 
   transition:
     opacity 0.7s ease,
-    transform 0.7s
-    cubic-bezier(.22, 1, .36, 1);
+    transform 0.7s cubic-bezier(.22, 1, .36, 1);
 }
 
 
 .reveal.visible {
   opacity: 1;
 
-  transform:
-    translateY(0);
+  transform: translateY(0);
 }
+
 
 
 /* ========================================
@@ -1290,12 +1849,6 @@ footer small {
       25px;
 
     border-radius: 16px;
-
-    box-shadow:
-      0
-      8px
-      26px
-      rgba(19, 23, 34, 0.03);
   }
 
 
@@ -1303,7 +1856,6 @@ footer small {
     left: 22px;
 
     width: 34px;
-    height: 3px;
   }
 
 
@@ -1316,7 +1868,6 @@ footer small {
     margin-top: 27px;
 
     padding:
-      22px
       22px;
   }
 
@@ -1502,6 +2053,187 @@ footer small {
   }
 
 
+  /* Closing Letter */
+
+  .closing-letter {
+    margin-top: 27px;
+  }
+
+
+  .letter-envelope {
+    grid-template-columns:
+      50px
+      1fr
+      32px;
+
+    gap: 14px;
+
+    padding:
+      21px
+      18px;
+
+    border-radius: 17px;
+  }
+
+
+  .envelope-mark {
+    width: 49px;
+    height: 35px;
+
+    border-radius: 7px;
+  }
+
+
+  .envelope-mark::before,
+  .envelope-mark::after {
+    top: 9px;
+
+    width: 27px;
+  }
+
+
+  .envelope-copy small {
+    font-size: 9px;
+  }
+
+
+  .envelope-copy strong {
+    margin-top: 3px;
+
+    font-size: 16px;
+  }
+
+
+  .open-letter-label {
+    margin-top: 5px;
+
+    font-size: 12px;
+  }
+
+
+  .envelope-arrow {
+    width: 32px;
+    height: 32px;
+
+    font-size: 13px;
+  }
+
+
+  .final-letter-paper {
+    padding:
+      27px
+      21px
+      28px;
+
+    border-radius: 17px;
+  }
+
+
+  .final-letter-meta {
+    padding-bottom: 16px;
+
+    font-size: 9px;
+  }
+
+
+  .final-letter-body {
+    padding-top: 23px;
+
+    font-size: 16px;
+
+    line-height: 1.85;
+  }
+
+
+  .final-letter-body p + p {
+    margin-top: 21px;
+  }
+
+
+  .final-letter-sign {
+    margin-top: 27px;
+
+    padding-top: 19px;
+
+    font-size: 14px;
+  }
+
+
+  .final-letter-sign strong {
+    font-size: 16px;
+  }
+
+
+  /* Prayer Form */
+
+  .prayer-form-card {
+    margin-top: 36px;
+
+    padding:
+      27px
+      22px
+      25px;
+
+    border-radius: 17px;
+  }
+
+
+  .prayer-form-top {
+    font-size: 9px;
+  }
+
+
+  .prayer-form-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+
+  .prayer-form-card h3 {
+    margin-top: 15px;
+
+    font-size: 22px;
+
+    line-height: 1.4;
+  }
+
+
+  .prayer-form-card p {
+    margin-top: 13px;
+
+    font-size: 15.5px;
+
+    line-height: 1.8;
+  }
+
+
+  .prayer-form-card p + p {
+    margin-top: 7px;
+  }
+
+
+  .prayer-form-button {
+    width: 100%;
+
+    min-width: 0;
+
+    margin-top: 22px;
+
+    padding:
+      15px
+      17px;
+
+    font-size: 14px;
+  }
+
+
+  .prayer-form-card > small {
+    margin-top: 11px;
+
+    font-size: 11px;
+  }
+
+
   footer {
     min-height: 48vh;
 
@@ -1546,6 +2278,7 @@ footer small {
 }
 
 
+
 /* ========================================
    NARROW MOBILE NAV
 ======================================== */
@@ -1557,6 +2290,7 @@ footer small {
   }
 
 }
+
 
 
 /* ========================================
@@ -1600,7 +2334,20 @@ footer small {
       23px;
   }
 
+
+  .letter-envelope {
+    grid-template-columns:
+      1fr
+      30px;
+  }
+
+
+  .envelope-mark {
+    display: none;
+  }
+
 }
+
 
 
 /* ========================================
@@ -1615,6 +2362,13 @@ footer small {
 
     transform: none;
 
+    transition: none;
+  }
+
+
+  .closing-letter-panel,
+  .envelope-arrow,
+  .letter-envelope {
     transition: none;
   }
 
